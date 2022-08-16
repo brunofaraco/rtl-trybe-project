@@ -1,6 +1,5 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import About from '../pages/About';
 import renderWithRouter from './renderWithRouter';
 
@@ -32,7 +31,7 @@ describe('Test "About" component', () => {
   test('if it have 2 "p" elements', () => {
     //  Acessar
     renderWithRouter(<About />);
-    const paragraphsArray = screen.getAllByText(/a/);
+    const paragraphsArray = screen.getAllByText(/Pokémons/);
     const paragraphsArrayLength = 2;
 
     // Agir
@@ -42,12 +41,15 @@ describe('Test "About" component', () => {
     expect(paragraphsArray.length).toBe(paragraphsArrayLength);
   });
 
-  // test('', () => {
-  //   //  Acessar
+  test('if the Pokedex URL is the right one', () => {
+    //  Acessar
+    renderWithRouter(<About />);
+    const pokedexImgElement = screen.getByRole('img');
+    const pokedexImgURL = 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
+    // Agir
+    // Não foi necessário
 
-  //   // Agir
-
-  //   // Aferir
-
-  // });
+    // Aferir
+    expect(pokedexImgElement).toHaveAttribute('src', pokedexImgURL);
+  });
 });
