@@ -8,12 +8,39 @@ describe('Test "About" component', () => {
   test('if it have info about Pokedex', () => {
     //  Acessar
     renderWithRouter(<About />);
-    // Agir
     const pokedexParagraph = screen.getByText(/this application simulates a pokédex/i);
+
+    // Agir
+    // Não foi necessário
 
     // Aferir
     expect(pokedexParagraph).toBeInTheDocument();
   });
+
+  test('if it have a h2 written "About Pokédex"', () => {
+    //  Acessar
+    renderWithRouter(<About />);
+    const aboutPokedexH2 = screen.getByText(/about pokédex/i);
+
+    // Agir
+    // Não foi necessário
+
+    // Aferir
+    expect(aboutPokedexH2).toBeInTheDocument();
+  });
+
+  // test('if it have 2 "p" elements', () => {
+  //   //  Acessar
+  //   renderWithRouter(<About />);
+  //   const paragraphsArray = screen.getAllByText(/a/);
+  //   const paragraphsArrayLength = 2;
+
+  //   // Agir
+  //   // Não foi necessário
+
+  //   // Aferir
+  //   expect(paragraphsArray.length).toBe(paragraphsArrayLength);
+  // });
 
   // test('', () => {
   //   //  Acessar
