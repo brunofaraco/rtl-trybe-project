@@ -33,17 +33,17 @@ describe('Test "App" component', () => {
     // Aferir
     expect(history.location.pathname).toBe('/');
   });
-  // test('when you click in "About", you are redirect to "/about"', () => {
-  //   //  Acessar
-  //   const { history } = renderWithRouter(<App />);
-  //   const homeLink = screen.getByRole('link', { name: /about/i });
+  test('when you click in "About", you are redirect to "/about"', () => {
+    //  Acessar
+    const { history } = renderWithRouter(<App />);
+    const homeLink = screen.getByRole('link', { name: /about/i });
 
-  //   // Agir
-  //   userEvent.click(homeLink);
+    // Agir
+    userEvent.click(homeLink);
 
-  //   // Aferir
-  //   expect(history.location.pathname).toBe('/about');
-  // });
+    // Aferir
+    expect(history.location.pathname).toBe('/about');
+  });
   // test('when you click in "Favorite Pokemons",you are redirect to "/favorites"', () => {
   //   //  Acessar
   //   const { history } = renderWithRouter(<App />);
