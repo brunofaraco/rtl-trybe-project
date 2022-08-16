@@ -55,25 +55,17 @@ describe('Test "App" component', () => {
     // Aferir
     expect(history.location.pathname).toBe('/favorites');
   });
-  // test('should third', () => {
-  //   //  Acessar
+  test('when you click go to a invalid URL,you are redirect to "NotFound"', () => {
+    //  Acessar
+    const { history } = renderWithRouter(<App />);
 
-  //   // Agir
+    // Agir
+    history.push('/SAHUSAHUSA');
 
-  //   // Aferir
-  // });
-  // test('should fourth', () => {
-  //   //  Acessar
-
-  //   // Agir
-
-  //   // Aferir
-  // });
-  // test('should fifth', () => {
-  //   //  Acessar
-
-  //   // Agir
-
-  //   // Aferir
-  // });
+    const titleNotFound = screen.getByRole(
+      'heading', { name: /page requested not found/i, level: 2 },
+    );
+    // Aferir
+    expect(titleNotFound).toBeInTheDocument();
+  });
 });
