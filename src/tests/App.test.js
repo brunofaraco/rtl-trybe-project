@@ -44,17 +44,17 @@ describe('Test "App" component', () => {
     // Aferir
     expect(history.location.pathname).toBe('/about');
   });
-  // test('when you click in "Favorite Pokemons",you are redirect to "/favorites"', () => {
-  //   //  Acessar
-  //   const { history } = renderWithRouter(<App />);
-  //   const homeLink = screen.getByRole('link', { name: /favorite pokémons/i });
+  test('when you click in "Favorite Pokemons",you are redirect to "/favorites"', () => {
+    //  Acessar
+    const { history } = renderWithRouter(<App />);
+    const homeLink = screen.getByRole('link', { name: /favorite pokémons/i });
 
-  //   // Agir
-  //   userEvent.click(homeLink);
+    // Agir
+    userEvent.click(homeLink);
 
-  //   // Aferir
-  //   expect(history.location.pathname).toBe('/favorites');
-  // });
+    // Aferir
+    expect(history.location.pathname).toBe('/favorites');
+  });
   // test('should third', () => {
   //   //  Acessar
 
