@@ -29,18 +29,18 @@ describe('Test "About" component', () => {
     expect(aboutPokedexH2).toBeInTheDocument();
   });
 
-  // test('if it have 2 "p" elements', () => {
-  //   //  Acessar
-  //   renderWithRouter(<About />);
-  //   const paragraphsArray = screen.getAllByText(/a/);
-  //   const paragraphsArrayLength = 2;
+  test('if it have 2 "p" elements', () => {
+    //  Acessar
+    renderWithRouter(<About />);
+    const paragraphsArray = screen.getAllByText(/a/);
+    const paragraphsArrayLength = 2;
 
-  //   // Agir
-  //   // Não foi necessário
+    // Agir
+    // Não foi necessário
 
-  //   // Aferir
-  //   expect(paragraphsArray.length).toBe(paragraphsArrayLength);
-  // });
+    // Aferir
+    expect(paragraphsArray.length).toBe(paragraphsArrayLength);
+  });
 
   // test('', () => {
   //   //  Acessar
