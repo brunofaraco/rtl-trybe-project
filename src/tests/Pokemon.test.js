@@ -12,7 +12,8 @@ describe('Test "Pokemon" component', () => {
     const POKEMON_TYPE = screen.getAllByText(/electric/i)[0];
     const POKEMON_WEIGHT = screen.getByText(/average/i);
     const MORE_DETAILS_LINK = screen.getByRole('link', { name: /more details/i });
-
+    const PIKACHU_IMG = screen.getByRole('img', { name: /pikachu sprite/i });
+    const PIKACHU_IMG_SRC = 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png';
     // Agir
     // Não foi necessário
 
@@ -21,6 +22,7 @@ describe('Test "Pokemon" component', () => {
     expect(POKEMON_TYPE).toBeInTheDocument();
     expect(POKEMON_WEIGHT).toBeInTheDocument();
     expect(MORE_DETAILS_LINK).toBeInTheDocument();
+    expect(PIKACHU_IMG).toHaveAttribute('src', PIKACHU_IMG_SRC);
   });
 
   test('test if the link have the right "href"', () => {
