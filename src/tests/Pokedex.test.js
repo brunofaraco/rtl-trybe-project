@@ -19,17 +19,45 @@ describe('Test "Pokedex" component', () => {
     expect(POKEDEX_H2).toBeInTheDocument();
   });
 
-  test('if when you click in the "Next button" you go to Charmander', () => {
+  test('if when you click in the "Next button" you go to the next Pokemon', () => {
     //  Acessar
     renderWithRouter(<App />);
-    const NEXT_BUTTON = screen.getByRole('button', { name: /próximo/i });
+    const NEXT_BUTTON = screen.getByTestId('next-pokemon');
+
     //  Agir
-    userEvent.click(NEXT_BUTTON);
-    const CHARMANDER_NAME = screen.getByText(/charmander/i);
+    const POKEMONS_ARR = ['Pikachu', 'Charmander', 'Caterpie', 'Ekans', 'Alakazam',
+      'Mew', 'Rapidash', 'Snorlax', 'Dragonair'];
 
     //  Aferir
-    expect(CHARMANDER_NAME).toBeInTheDocument();
+    POKEMONS_ARR.forEach((pokemon) => {
+      const POKEMON_ELEMENT = screen.getByText(pokemon);
+      expect(POKEMON_ELEMENT).toBeInTheDocument();
+      userEvent.click(NEXT_BUTTON);
+    });
+    const PIKACHU_ELEMENT = screen.getByText(/pikachu/i);
+    expect(PIKACHU_ELEMENT).toBeInTheDocument();
   });
+
+  // test('if shows just one Pokemon', () => {
+  //   //  Acessar
+  //   renderWithRouter(<App />);
+  //   const ACTUAL_POKEMON = screen.getAllByTestId('pokemon-name');
+  //   const ACTUAL_POKEMON_LENGTH = 1;
+
+  //   //  Agir
+  //   // Não foi necessário
+
+  //   //  Aferir
+  //   expect(ACTUAL_POKEMON.length).toBe(ACTUAL_POKEMON_LENGTH);
+  // });
+
+  // test('', () => {
+  //   //  Acessar
+
+  //   //  Agir
+
+  //   //  Aferir
+  // });
 
   // test('', () => {
   //   //  Acessar
