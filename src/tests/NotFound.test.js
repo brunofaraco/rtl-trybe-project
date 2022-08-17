@@ -18,25 +18,17 @@ describe('Test "Not Found" component', () => {
     expect(titleNotFound).toBeInTheDocument();
   });
 
-  // test('if the NotFound image URL is the right one', () => {
-  //   //  Acessar
-  //   const { history } = renderWithRouter(<App />);
+  test('if the NotFound image URL is the right one', () => {
+    //  Acessar
+    const { history } = renderWithRouter(<App />);
 
-  //   // Agir
-  //   history.push('/SAHUSAHUSA');
+    // Agir
+    history.push('/SAHUSAHUSA');
 
-  //   const notFoundImgElement = screen.getByAltText(/pikachu crying/i);
-  //   const notFoundImgURL = 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif';
+    const notFoundImgElement = screen.getByAltText(/pikachu crying/i);
+    const notFoundImgURL = 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif';
 
-  //   // Aferir
-  //   expect(notFoundImgElement).toHaveAttribute('src', notFoundImgURL);
-  // });
-
-  // test('if it have info about Pokedex', () => {
-  //   //  Acessar
-
-  //   // Agir
-
-  //   // Aferir
-  // });
+    // Aferir
+    expect(notFoundImgElement).toHaveAttribute('src', notFoundImgURL);
+  });
 });
