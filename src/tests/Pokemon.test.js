@@ -35,17 +35,17 @@ describe('Test "Pokemon" component', () => {
     expect(MORE_DETAILS_LINK).toHaveAttribute('href', EXPECTED_PATHNAME);
   });
 
-  // test('if the link has the right ID', () => {
-  //   // Acessar
-  //   const { history } = renderWithRouter(<App />);
-  //   const MORE_DETAILS_LINK = screen.getByRole('link', { name: /more details/i });
-  //   const PIKACHU_ID = 25;
-  //   const EXPECTED_PATHNAME = `/pokemons/${PIKACHU_ID}`;
+  test('if the link has the right ID', () => {
+    // Acessar
+    const { history } = renderWithRouter(<App />);
+    const MORE_DETAILS_LINK = screen.getByRole('link', { name: /more details/i });
+    const PIKACHU_ID = 25;
+    const EXPECTED_PATHNAME = `/pokemons/${PIKACHU_ID}`;
 
-  //   // Agir
-  //   userEvent.click(MORE_DETAILS_LINK);
+    // Agir
+    userEvent.click(MORE_DETAILS_LINK);
 
-  //   // Aferir
-  //   expect(history.location.pathname).toBe(EXPECTED_PATHNAME);
-  // });
+    // Aferir
+    expect(history.location.pathname).toBe(EXPECTED_PATHNAME);
+  });
 });
