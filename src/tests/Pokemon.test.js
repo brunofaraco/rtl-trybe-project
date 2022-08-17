@@ -1,80 +1,31 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import App from '../App';
 import renderWithRouter from './renderWithRouter';
+// import Pokemon from '../components/Pokemon';
+import App from '../App';
 
 describe('Test "Pokemon" component', () => {
-  test('if Pikachu card is rendered', () => {
-    // Acessar
-    renderWithRouter(<App />);
-    const MORE_DETAILS_LINK = screen.getByRole('link', { name: /more details/i });
-    expect(MORE_DETAILS_LINK).toBeInTheDocument();
-
-    // Agir
-    userEvent.click(MORE_DETAILS_LINK);
-
-    const POKEMON_NAME = screen.getAllByText(/pikachu/i)[1];
-    const POKEMON_TYPE = screen.getByText(/Electric/);
-    const POKEMON_WEIGHT = screen.getByText(/average/i);
-    const PIKACHU_IMG = screen.getByRole('img', { name: /pikachu sprite/i });
-    const PIKACHU_IMG_SRC = 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png';
-
-    // Aferir
-    expect(POKEMON_NAME).toBeInTheDocument();
-    expect(POKEMON_TYPE).toBeInTheDocument();
-    expect(POKEMON_WEIGHT).toBeInTheDocument();
-    expect(PIKACHU_IMG).toHaveAttribute('src', PIKACHU_IMG_SRC);
-  });
-
-  test('test if the link have the right "href"', () => {
+  test('if render Pikachu card', () => {
     //  Acessar
     renderWithRouter(<App />);
-    const MORE_DETAILS_LINK = screen.getByRole('link', { name: /more details/i });
-    const PIKACHU_ID = 25;
-    const EXPECTED_PATHNAME = `/pokemons/${PIKACHU_ID}`;
-    // Agir
 
-    // Aferir
-    expect(MORE_DETAILS_LINK).toHaveAttribute('href', EXPECTED_PATHNAME);
-  });
+    const POKEMON_NAME = screen.getByTestId('pokemon-name');
+    const POKEMON_TYPE = screen.getByTestId('pokemon-type');
+    const POKEMON_WEIGHT = screen.getByTestId('pokemon-weight');
 
-  test('if the link has the right ID', () => {
-    // Acessar
-    const { history } = renderWithRouter(<App />);
-    const MORE_DETAILS_LINK = screen.getByRole('link', { name: /more details/i });
-    const PIKACHU_ID = 25;
-    const EXPECTED_PATHNAME = `/pokemons/${PIKACHU_ID}`;
+    const POKEMON_IMG = screen.getByRole('img');
+    const POKEMON_IMG_SRC = 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png';
+    const POKEMON_IMG_ALT = 'Pikachu sprite';
 
     // Agir
-    userEvent.click(MORE_DETAILS_LINK);
+    // Não foi necessário
 
     // Aferir
-    expect(history.location.pathname).toBe(EXPECTED_PATHNAME);
+    expect(POKEMON_NAME).toHaveTextContent(/pikachu/i);
+    expect(POKEMON_TYPE).toHaveTextContent(/electric/i);
+    expect(POKEMON_WEIGHT).toHaveTextContent(/average weight: 6.0 kg/i);
+    expect(POKEMON_IMG).toHaveAttribute('src', POKEMON_IMG_SRC);
+    expect(POKEMON_IMG).toHaveAttribute('alt', POKEMON_IMG_ALT);
   });
-
-  test('if the favorite icon appears when you click in the checkbox', () => {
-    // Acessar
-    renderWithRouter(<App />);
-    const MORE_DETAILS_LINK = screen.getByRole('link', { name: /more details/i });
-
-    // Agir
-    userEvent.click(MORE_DETAILS_LINK);
-    const FAVORITE_CHECKBOX = screen.getByLabelText(/pokémon favoritado/i);
-    userEvent.click(FAVORITE_CHECKBOX);
-    const FAVORITE_ICON_ELEMENT = screen.getByRole('img', { name: /pikachu is marked/i });
-    const FAVORITE_ICON_SRC = '/star-icon.svg';
-
-    // Aferir
-    expect(FAVORITE_ICON_ELEMENT).toBeInTheDocument();
-    expect(FAVORITE_ICON_ELEMENT).toHaveAttribute('src', FAVORITE_ICON_SRC);
-  });
-
-  // test('', () => {
-  //   // Acessar
-
-  //   // Agir
-
-  //   // Aferir
-  // });
 });
