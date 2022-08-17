@@ -71,7 +71,7 @@ describe('Test "Pokedex" component', () => {
 
     ALL_FILTER_BUTTONS.forEach((button, index) => {
       expect(button).toHaveTextContent(FILTER_BUTTONS[index]);
-      expect(ALL_BUTTON_ELEMENT).toBeInTheDocument();
+      expect(ALL_BUTTON_ELEMENT).toBeEnabled();
     });
   });
 
