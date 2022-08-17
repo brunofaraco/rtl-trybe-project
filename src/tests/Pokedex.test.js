@@ -25,16 +25,22 @@ describe('Test "Pokedex" component', () => {
     const NEXT_BUTTON = screen.getByTestId('next-pokemon');
 
     //  Agir
+    // Não foi necessário
+
+    //  Aferir
     const POKEMONS_ARR = ['Pikachu', 'Charmander', 'Caterpie', 'Ekans', 'Alakazam',
       'Mew', 'Rapidash', 'Snorlax', 'Dragonair'];
 
-    //  Aferir
     POKEMONS_ARR.forEach((pokemon) => {
       const POKEMON_ELEMENT = screen.getByText(pokemon);
+
       expect(POKEMON_ELEMENT).toBeInTheDocument();
+
       userEvent.click(NEXT_BUTTON);
     });
+
     const PIKACHU_ELEMENT = screen.getByText(/pikachu/i);
+
     expect(PIKACHU_ELEMENT).toBeInTheDocument();
   });
 
@@ -51,13 +57,23 @@ describe('Test "Pokedex" component', () => {
     expect(ACTUAL_POKEMON.length).toBe(ACTUAL_POKEMON_LENGTH);
   });
 
-  // test('', () => {
-  //   //  Acessar
+  test('if the Pokedex has filter buttons', () => {
+    //  Acessar
+    renderWithRouter(<App />);
+    const ALL_FILTER_BUTTONS = screen.getAllByTestId('pokemon-type-button');
+    const ALL_BUTTON_ELEMENT = screen.getByText(/All/);
+    //  Agir
+    // Não foi necessário
 
-  //   //  Agir
+    //  Aferir
+    const FILTER_BUTTONS = ['Electric', 'Fire', 'Bug', 'Poison',
+      'Psychic', 'Normal', 'Dragon'];
 
-  //   //  Aferir
-  // });
+    ALL_FILTER_BUTTONS.forEach((button, index) => {
+      expect(button).toHaveTextContent(FILTER_BUTTONS[index]);
+      expect(ALL_BUTTON_ELEMENT).toBeInTheDocument();
+    });
+  });
 
   // test('', () => {
   //   //  Acessar
