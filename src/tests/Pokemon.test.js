@@ -48,4 +48,29 @@ describe('Test "Pokemon" component', () => {
     // Aferir
     expect(history.location.pathname).toBe(EXPECTED_PATHNAME);
   });
+
+  test('if the favorite icon appears when you click in the checkbox', () => {
+    // Acessar
+    renderWithRouter(<App />);
+    const MORE_DETAILS_LINK = screen.getByRole('link', { name: /more details/i });
+
+    // Agir
+    userEvent.click(MORE_DETAILS_LINK);
+    const FAVORITE_CHECKBOX = screen.getByLabelText(/pokémon favoritado/i);
+    userEvent.click(FAVORITE_CHECKBOX);
+    const FAVORITE_ICON_ELEMENT = screen.getByRole('img', { name: /pikachu is marked/i });
+    const FAVORITE_ICON_SRC = '/star-icon.svg';
+
+    // Aferir
+    expect(FAVORITE_ICON_ELEMENT).toBeInTheDocument();
+    expect(FAVORITE_ICON_ELEMENT).toHaveAttribute('src', FAVORITE_ICON_SRC);
+  });
+
+  // test('', () => {
+  //   // Acessar
+
+  //   // Agir
+
+  //   // Aferir
+  // });
 });
