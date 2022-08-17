@@ -7,25 +7,25 @@ describe('Test "About" component', () => {
   test('if it have info about Pokedex', () => {
     //  Acessar
     renderWithRouter(<About />);
-    const pokedexParagraph = screen.getByText(/this application simulates a pokédex/i);
+    const POKEDEX_PARAGRAPH = screen.getByText(/this application simulates a pokédex/i);
 
     // Agir
     // Não foi necessário
 
     // Aferir
-    expect(pokedexParagraph).toBeInTheDocument();
+    expect(POKEDEX_PARAGRAPH).toBeInTheDocument();
   });
 
   test('if it have a h2 written "About Pokédex"', () => {
     //  Acessar
     renderWithRouter(<About />);
-    const aboutPokedexH2 = screen.getByText(/about pokédex/i);
+    const POKEDEX_H2 = screen.getByText(/about pokédex/i);
 
     // Agir
     // Não foi necessário
 
     // Aferir
-    expect(aboutPokedexH2).toBeInTheDocument();
+    expect(POKEDEX_H2).toBeInTheDocument();
   });
 
   test('if it have 2 "p" elements', () => {
@@ -44,13 +44,13 @@ describe('Test "About" component', () => {
   test('if the Pokedex URL is the right one', () => {
     //  Acessar
     renderWithRouter(<About />);
-    const pokedexImgElement = screen.getByRole('img');
-    const pokedexImgURL = 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
+    const POKEDEX_IMG_ELEMENT = screen.getByRole('img');
+    const POKEDEX_IMG_URL = 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
 
     // Agir
     // Não foi necessário
 
     // Aferir
-    expect(pokedexImgElement).toHaveAttribute('src', pokedexImgURL);
+    expect(POKEDEX_IMG_ELEMENT).toHaveAttribute('src', POKEDEX_IMG_URL);
   });
 });

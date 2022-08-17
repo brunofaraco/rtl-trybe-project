@@ -9,25 +9,26 @@ describe('Test "App" component', () => {
     //  Acessar
     renderWithRouter(<App />);
 
-    const homeLink = screen.getByRole('link', { name: /home/i });
-    const aboutLink = screen.getByRole('link', { name: /about/i });
-    const favoritePokemonsLink = screen.getByRole('link', { name: /favorite pokémons/i });
+    const HOME_LINK = screen.getByRole('link', { name: /home/i });
+    const ABOUT_LINK = screen.getByRole('link', { name: /about/i });
+    const FAVORITE_POKEMONS_LINK = screen
+      .getByRole('link', { name: /favorite pokémons/i });
 
     // Agir
     // Não foi necessário
 
     // Aferir
-    expect(homeLink).toBeInTheDocument();
-    expect(aboutLink).toBeInTheDocument();
-    expect(favoritePokemonsLink).toBeInTheDocument();
+    expect(HOME_LINK).toBeInTheDocument();
+    expect(ABOUT_LINK).toBeInTheDocument();
+    expect(FAVORITE_POKEMONS_LINK).toBeInTheDocument();
   });
   test('when you click in "Home", you are redirect to "/"', () => {
     //  Acessar
     const { history } = renderWithRouter(<App />);
-    const homeLink = screen.getByRole('link', { name: /home/i });
+    const HOME_LINK = screen.getByRole('link', { name: /home/i });
 
     // Agir
-    userEvent.click(homeLink);
+    userEvent.click(HOME_LINK);
 
     // Aferir
     expect(history.location.pathname).toBe('/');
@@ -35,10 +36,10 @@ describe('Test "App" component', () => {
   test('when you click in "About", you are redirect to "/about"', () => {
     //  Acessar
     const { history } = renderWithRouter(<App />);
-    const homeLink = screen.getByRole('link', { name: /about/i });
+    const HOME_LINK = screen.getByRole('link', { name: /about/i });
 
     // Agir
-    userEvent.click(homeLink);
+    userEvent.click(HOME_LINK);
 
     // Aferir
     expect(history.location.pathname).toBe('/about');
@@ -46,10 +47,10 @@ describe('Test "App" component', () => {
   test('when you click in "Favorite Pokemons",you are redirect to "/favorites"', () => {
     //  Acessar
     const { history } = renderWithRouter(<App />);
-    const homeLink = screen.getByRole('link', { name: /favorite pokémons/i });
+    const HOME_LINK = screen.getByRole('link', { name: /favorite pokémons/i });
 
     // Agir
-    userEvent.click(homeLink);
+    userEvent.click(HOME_LINK);
 
     // Aferir
     expect(history.location.pathname).toBe('/favorites');

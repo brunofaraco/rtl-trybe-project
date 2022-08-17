@@ -13,12 +13,4 @@ describe('Test Favorite Pokémons component', () => {
     // Aferir
     expect(RIGHT_PARAGRAPH).toBeInTheDocument();
   });
-
-  // test('', () => {
-  //   // Acessar
-
-  //   // Agir
-
-  //   // Aferir
-  // });
 });
