@@ -5,12 +5,12 @@ import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
 describe('Test "Pokemon" component', () => {
-  test('', () => {
+  test('if the right card is rendered', () => {
     // Acessar
     renderWithRouter(<App />);
-    const POKEMON_NAME = screen.getByTestId('pokemon-name');
-    const POKEMON_TYPE = screen.getByTestId('pokemon-type');
-    const POKEMON_WEIGHT = screen.getByTestId('pokemon-weight');
+    const POKEMON_NAME = screen.getByText(/pikachu/i);
+    const POKEMON_TYPE = screen.getAllByText(/electric/i)[0];
+    const POKEMON_WEIGHT = screen.getByText(/average/i);
     const MORE_DETAILS_LINK = screen.getByRole('link', { name: /more details/i });
 
     // Agir
