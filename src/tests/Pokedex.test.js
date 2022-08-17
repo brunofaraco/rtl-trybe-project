@@ -1,12 +1,12 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import Pokedex from '../pages/Pokedex';
+import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
 describe('Test "Pokedex" component', () => {
   test('', () => {
     //  Acessar
-    renderWithRouter(<Pokedex />);
+    renderWithRouter(<App />);
     const POKEDEX_H2 = screen.getByRole(
       'heading', { name: /encountered pokémons/i, level: 2 },
     );
@@ -16,6 +16,14 @@ describe('Test "Pokedex" component', () => {
 
     //  Aferir
     expect(POKEDEX_H2).toBeInTheDocument();
+  });
+
+  test('', () => {
+    //  Acessar
+
+    //  Agir
+
+    //  Aferir
   });
 
   // test('', () => {
