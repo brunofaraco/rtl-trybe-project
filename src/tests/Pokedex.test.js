@@ -75,11 +75,18 @@ describe('Test "Pokedex" component', () => {
     });
   });
 
-  // test('', () => {
-  //   //  Acessar
+  test('if Pokedex has "All" button', () => {
+    //  Acessar
+    renderWithRouter(<App />);
+    const ALL_BUTTON_ELEMENT = screen.getByText(/All/);
+    const NEXT_BUTTON = screen.getByTestId('next-pokemon');
 
-  //   //  Agir
+    //  Agir
+    userEvent.click(ALL_BUTTON_ELEMENT);
+    userEvent.click(NEXT_BUTTON);
+    const CHARMANDER_ELEMENT = screen.getByText(/charmander/i);
 
-  //   //  Aferir
-  // });
+    //  Aferir
+    expect(CHARMANDER_ELEMENT).toBeInTheDocument();
+  });
 });
