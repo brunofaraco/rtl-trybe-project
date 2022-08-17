@@ -38,18 +38,18 @@ describe('Test "Pokedex" component', () => {
     expect(PIKACHU_ELEMENT).toBeInTheDocument();
   });
 
-  // test('if shows just one Pokemon', () => {
-  //   //  Acessar
-  //   renderWithRouter(<App />);
-  //   const ACTUAL_POKEMON = screen.getAllByTestId('pokemon-name');
-  //   const ACTUAL_POKEMON_LENGTH = 1;
+  test('if shows just one Pokemon', () => {
+    //  Acessar
+    renderWithRouter(<App />);
+    const ACTUAL_POKEMON = screen.getAllByTestId('pokemon-name');
+    const ACTUAL_POKEMON_LENGTH = 1;
 
-  //   //  Agir
-  //   // Não foi necessário
+    //  Agir
+    // Não foi necessário
 
-  //   //  Aferir
-  //   expect(ACTUAL_POKEMON.length).toBe(ACTUAL_POKEMON_LENGTH);
-  // });
+    //  Aferir
+    expect(ACTUAL_POKEMON.length).toBe(ACTUAL_POKEMON_LENGTH);
+  });
 
   // test('', () => {
   //   //  Acessar
