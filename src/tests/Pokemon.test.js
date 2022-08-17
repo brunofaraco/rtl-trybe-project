@@ -28,4 +28,49 @@ describe('Test "Pokemon" component', () => {
     expect(POKEMON_IMG).toHaveAttribute('src', POKEMON_IMG_SRC);
     expect(POKEMON_IMG).toHaveAttribute('alt', POKEMON_IMG_ALT);
   });
+
+  test('if the card have the right URL', () => {
+    //  Acessar
+    renderWithRouter(<App />);
+    const MORE_DETAILS_LINK = screen.getByRole('link', { name: /more details/i });
+
+    // Agir
+    // Não foi necessário
+
+    // Aferir
+    expect(MORE_DETAILS_LINK).toBeInTheDocument();
+    expect(MORE_DETAILS_LINK).toHaveAttribute('href', '/pokemons/25');
+  });
+
+  test('if when you click in the link, you go to the right URL', () => {
+    //  Acessar
+    const { history } = renderWithRouter(<App />);
+    const MORE_DETAILS_LINK = screen.getByRole('link', { name: /more details/i });
+
+    // Agir
+    userEvent.click(MORE_DETAILS_LINK);
+    const PIKACHU_DETAILS_HEADING = screen
+      .getByRole('heading', { name: /pikachu details/i, level: 2 });
+
+    // Aferir
+    expect(PIKACHU_DETAILS_HEADING).toBeInTheDocument();
+    expect(history.location.pathname).toBe('/pokemons/25');
+  });
+
+  test('if when you favorite, the star image appears', () => {
+    //  Acessar
+    renderWithRouter(<App />);
+    const MORE_DETAILS_LINK = screen.getByRole('link', { name: /more details/i });
+
+    // Agir
+    userEvent.click(MORE_DETAILS_LINK);
+
+    const FAVORITE_CHECKBOX = screen.getByLabelText(/pokémon favoritado/i);
+    userEvent.click(FAVORITE_CHECKBOX);
+    const STAR_IMG = screen.getByRole('img', { name: /marked as favorite/i });
+
+    // Aferir
+    expect(STAR_IMG).toHaveAttribute('src', '/star-icon.svg');
+    expect(STAR_IMG).toHaveAttribute('alt', 'Pikachu is marked as favorite');
+  });
 });
