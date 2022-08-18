@@ -29,14 +29,33 @@ describe('Test the "PokemonDetails" component', () => {
     expect(SUMMARY_PARAGRAPH).toBeInTheDocument();
   });
 
-  // test('', () => {
-  //   //  Acessar
+  test('if exists a section with maps containing the pokemon location', () => {
+    //  Acessar
+    renderWithRouter(<App />);
+    const NEXT_POKEMON_BUTTON = screen.getByRole('button', { name: /próximo/i });
 
-  //   // Agir
-  //   // Não foi necessário
+    // Agir
+    userEvent.click(NEXT_POKEMON_BUTTON);
 
-  //   // Aferir
-  // });
+    const MORE_DETAILS_CHARMANDER = screen.getByRole('link', { name: /details/i });
+    userEvent.click(MORE_DETAILS_CHARMANDER);
+
+    const CHARMANDER_GAME_LOCATIONS_HEADING = screen
+      .getByRole('heading', { name: /game locations of charmander/i, level: 2 });
+
+    const CHARMANDER_LOCATIONS_MAPS_IMG = screen.getAllByAltText(/charmander location/i);
+    const CHARMANDER_LOCATIONS = 4;
+
+    const CHARMANDER_FIRST_MAP = CHARMANDER_LOCATIONS_MAPS_IMG[0];
+    const CHARMANDER_FIRST_MAP_SRC = 'https://cdn2.bulbagarden.net/upload/9/93/Alola_Route_3_Map.png';
+    const CHARMANDER_FIRST_MAP_ALT = 'Charmander location';
+
+    // Aferir
+    expect(CHARMANDER_GAME_LOCATIONS_HEADING).toBeInTheDocument();
+    expect(CHARMANDER_LOCATIONS_MAPS_IMG).toHaveLength(CHARMANDER_LOCATIONS);
+    expect(CHARMANDER_FIRST_MAP).toHaveAttribute('src', CHARMANDER_FIRST_MAP_SRC);
+    expect(CHARMANDER_FIRST_MAP).toHaveAttribute('alt', CHARMANDER_FIRST_MAP_ALT);
+  });
 
   // test('', () => {
   //   //  Acessar
