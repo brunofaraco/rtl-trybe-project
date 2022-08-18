@@ -57,12 +57,27 @@ describe('Test the "PokemonDetails" component', () => {
     expect(CHARMANDER_FIRST_MAP).toHaveAttribute('alt', CHARMANDER_FIRST_MAP_ALT);
   });
 
-  // test('', () => {
-  //   //  Acessar
+  test('if the user can favorite the pokemon', () => {
+    //  Acessar
+    renderWithRouter(<App />);
+    const NEXT_POKEMON_BUTTON = screen.getByRole('button', { name: /próximo/i });
 
-  //   // Agir
-  //   // Não foi necessário
+    // Agir
+    userEvent.click(NEXT_POKEMON_BUTTON);
 
-  //   // Aferir
-  // });
+    const MORE_DETAILS_CHARMANDER = screen.getByRole('link', { name: /details/i });
+    userEvent.click(MORE_DETAILS_CHARMANDER);
+
+    const FAVORITE_CHECKBOX = screen.getByLabelText(/pokémon favoritado\?/i);
+
+    userEvent.click(FAVORITE_CHECKBOX);
+    const STAR_IMG = screen.getByRole('img', { name: /is marked as favorite/i });
+    expect(STAR_IMG).toBeInTheDocument();
+
+    userEvent.click(FAVORITE_CHECKBOX);
+    expect(STAR_IMG).not.toBeInTheDocument();
+
+    // Aferir
+    expect(FAVORITE_CHECKBOX).toBeInTheDocument();
+  });
 });
